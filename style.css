@@ -1,7 +1,16 @@
-html, body{
+html, body {
   width: 100%;
   height: 100%;
   font-family: monospace;
   color: #d4e8eb;
   background-color: #333333;
+}
+
+#addButton {
+  background-color: #d4e8eb;
+  font-family: monospace;
+}
+
+#newFile {
+  background-color: #d4e8eb;
 }
