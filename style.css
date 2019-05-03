@@ -6,11 +6,11 @@ html, body {
   background-color: #333333;
 }
 
-#addButton {
+.addButton {
   background-color: #d4e8eb;
   font-family: monospace;
 }
 
-#newFile {
+.newFile {
   background-color: #d4e8eb;
 }
