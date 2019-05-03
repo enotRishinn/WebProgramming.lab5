@@ -1,16 +1,36 @@
 html, body {
   width: 100%;
-  height: 100%;
+  padding: 0px;
+  margin: 0px;
   font-family: monospace;
   color: #d4e8eb;
-  background-color: #333333;
 }
 
-.addButton {
+.addButton, .saveButton, .deleteButton {
   background-color: #d4e8eb;
   font-family: monospace;
 }
 
 .newFile {
   background-color: #d4e8eb;
+}
+
+.actionDiv {
+  width: 20%;
+  height: 100%;
+  padding: 2%;
+  margin: 0px;
+  background-color: #333333;
+
+}
+
+.leftBody{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
 }

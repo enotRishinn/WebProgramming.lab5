@@ -9,17 +9,33 @@
 </<head>
 <body>
 
-  <div class="actionDiv">
+  <div class="leftBody">
+   <div class="actionDiv">
     <form action="/add" method="post" class="addForm">
       <p>Введите имя нового файла</p>
-      <input type="text" class="newFile"/><br><br>
+      <input type="text" name="addFile" class="newFile"/><br><br>
       <button type="submit" class="addButton">Добавить файл</button>
     </form> <br><br>
+
+    <div class="saveFile">
+      <form action="/update" method="post" id="update">
+        <input type="hidden" name="saveFile"/>
+        <button type="submit" class="saveButton">Сохранить открытый файл</button>
+      </form>
+    </div><br>
+    <div class="deleteFile">
+      <form action="/delete" method="post">
+        <input type="hidden" name="deleteFile"/>
+        <button type="submit" class="deleteButton">Удалить открытый файл</button>
+      </form>
+    </div><br><br>
+
     <div class="myFiles">
       <p>Список файлов</p>
     </div>
 
   </div>
+ </div>
 
 
 </body>
