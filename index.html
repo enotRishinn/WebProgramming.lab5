@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <script src="https://unpkg.com/marked@0.3.6"></script>
@@ -9,7 +9,13 @@
 </<head>
 <body>
 
-
+  <div>
+    <form action="/add" method="post" id="addForm">
+      <p>Введите имя нового файла</p>
+      <input type="text" id="newFile"/><br/>
+      <button type="submit" id="addButton">Добавить файл</button>
+    </form>
+  </div>
 
 </body>
 </html>
