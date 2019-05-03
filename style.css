@@ -15,16 +15,15 @@ html, body {
   background-color: #d4e8eb;
 }
 
-.actionDiv {
+.leftPanel {
   width: 20%;
   height: 100%;
   padding: 2%;
   margin: 0px;
   background-color: #333333;
-
 }
 
-.leftBody{
+.mainBody{
   margin: 0;
   padding: 0;
   width: 100%;
