@@ -10,38 +10,44 @@
 <body>
 
   <div class="mainBody">
-   <div class="leftPanel">
-    <form action="/add" method="post" class="addForm">
-      <p>Введите имя нового файла</p>
-      <input type="text" name="addFile" class="newFile"/><br><br>
-      <button type="submit" class="addButton">Добавить файл</button>
-    </form> <br><br><br>
+    <div class="topPanel">
+      <div class="leftPanel">
+        <form action="/add" method="post" class="addForm">
+          <p>Имя файла</p>
+          <input type="text" name="addFile" class="addFile"/><br><br>
+          <button type="submit" class="addButton">Создать файл</button>
+        </form><br><br>
 
-    <div class="saveFile">
-      <form action="/update" method="post" id="update">
-        <input type="hidden" name="saveFile"/>
-        <button type="submit" class="saveButton">Сохранить открытый файл</button>
-      </form>
-    </div><br>
-    <div class="deleteFile">
-      <form action="/delete" method="post">
-        <input type="hidden" name="deleteFile"/>
-        <button type="submit" class="deleteButton">Удалить открытый файл</button>
-      </form>
-    </div><br><br>
+        <div class="saveFile">
+          <form action="/update" method="post" id="update">
+            <input type="hidden" name="saveFile"/>
+            <button type="submit" class="saveButton">Сохранить открытый файл</button>
+          </form>
+        </div>
+        <div class="deleteFile">
+          <form action="/delete" method="post">
+            <input type="hidden" name="deleteFile"/>
+            <button type="submit" class="deleteButton">Удалить открытый файл</button>
+          </form>
+        </div>
 
-    <div class="myFiles">
-      <p>Список файлов</p>
+        <div class="myFiles">
+          <p>Список файлов</p>
+        </div>
+      </div>
+      <div class="fileArea">
+        <div class="topBar">
+          <div class="fileInfo">
+            <p>НАЗВАНИЕ ФАЙЛА</p>
+          </div>
+        </div>
+        <div class="mdArea">
+          <textarea @input="update" name="fileText" class="mdEditor" form="update"></textarea>
+          <div v-html="compiledMarkdown" class="mdView"></div>
+        </div>
+      </div>
     </div>
-
   </div>
-
-  <div class="topPanel">
-    <p>ИМЯ ОТКРЫТОГО ФАЙЛА</p>
-  </<div>
-
- </div>
-
 
 </body>
 </html>
