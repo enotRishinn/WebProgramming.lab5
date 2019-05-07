@@ -12,23 +12,29 @@ block content
           button.addButton(type='submit') Создать файл
         br
         br
-        .saveFile
-          form#update(action='/update', method='post')
-            input(type='hidden', name='saveFile')
-            button.saveButton(type='submit') Сохранить открытый файл
-        .deleteFile
-          form(action='/delete', method='post')
-            input(type='hidden', name='deleteFile')
-            button.deleteButton(type='submit') Удалить открытый файл
-        .myFiles
-          p Список файлов
-      .fileArea
-        .topBar
-          .fileInfo
-            p НАЗВАНИЕ ФАЙЛА
-        #editor
-          textarea#mdEditor(:value='input', @input='update')
-          .mdView(v-html='compiledMarkdown')
+        if (fileName !== null)
+         .saveFile
+           form#update(action='/update', method='post')
+             input(type='hidden', name='saveFile', value=fileName)
+             button.saveButton(type='submit') Сохранить открытый файл
+         .deleteFile
+           form(action='/delete', method='post')
+             input(type='hidden', name='deleteFile', value=fileName)
+             button.deleteButton(type='submit') Удалить открытый файл
+         .myFiles
+           p Список файлов
+           ul
+            each file in myFilesArr
+              li
+                a(href="/file/#{file}")=file
+
+       .fileArea
+         .topBar
+           .fileInfo
+             p=fileName
+         #editor
+           textarea#mdEditor(:value='input', name="fileText", @input='update')=fileText
+           .mdView(v-html='compiledMarkdown')
   script.
     new Vue({
     el: '#editor',
