@@ -11,14 +11,14 @@ router.get('/', function(req, res, next) {
   var myFilesArr = [];
   mongo.connect(url, function(err, client) {
     assert.equal(null, err);
-    var db = client.db('');
+    var db = client.db('md');
     var cursor = db.collection('files').find();
     cursor.forEach(function(doc, err) {
       assert.equal(null, err);
       myFilesArr.push(doc.filename);
     }, function(){
       client.close();
-      res.render('index', { title: 'Markdown Editor', myFilesArr: myFilesArr, fileName: req.params.fileName, fileText: null });
+      res.render('index', { title: 'Markdown Editor', myFilesArr: myFilesArr, fileName: null, fileText: null });
     });
   });
 });
@@ -72,5 +72,19 @@ router.post('/update', function(req, res, next){
   res.redirect('/file/' + fileName);
 });
 
+router.post('/delete', function(req, res, next){
+  var fileName = req.body.deleteFile;
+  mongo.connect(url, function(err, client) {
+    assert.equal(null, err);
+    var db = client.db('md');
+    db.collection('files').deleteOne({ filename : fileName}, function (err, num){
+      assert.equal(null, err);
+      client.close();
+      var fileStringName = 'C:/Users/Enot/Desktop/Web/lab5/lab-node-js/express-app/public/files/' + fileName + '.md';
+      fs.unlinkSync(fileStringName);
+      res.redirect('/');
+    });
+  });
+});
 
 module.exports = router;

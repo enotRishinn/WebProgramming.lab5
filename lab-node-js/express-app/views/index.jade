@@ -12,21 +12,21 @@ block content
           button.addButton(type='submit') Создать файл
         br
         br
-        if (fileName !== null)
-         .saveFile
-           form(action='/update', method='post', id="update")
-             input(type='hidden', name='saveFile', value=fileName)
-             button.saveButton(type='submit') Сохранить открытый файл
-         .deleteFile
-           form(action='/delete', method='post')
-             input(type='hidden', name='deleteFile', value=fileName)
-             button.deleteButton(type='submit') Удалить открытый файл
-         .myFiles
-           p Список файлов
-           ul
-            each file in myFilesArr
-              li
-                a(href="/file/#{file}")=file
+
+        .saveFile
+          form(action='/update', method='post', id="update")
+            input(type='hidden', name='saveFile', value=fileName)
+            button.saveButton(type='submit') Сохранить открытый файл
+        .deleteFile
+          form(action='/delete', method='post')
+            input(type='hidden', name='deleteFile', value=fileName)
+            button.deleteButton(type='submit') Удалить открытый файл
+        .myFiles
+          p Список файлов
+          ul
+           each file in myFilesArr
+            li
+              a(href="/file/#{file}")=file
 
        .fileArea
          .topBar
