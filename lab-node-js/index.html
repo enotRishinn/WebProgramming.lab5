@@ -41,10 +41,12 @@
             <p>НАЗВАНИЕ ФАЙЛА</p>
           </div>
         </div>
-        <div class="mdArea">
-          <textarea @input="update" name="fileText" class="mdEditor" form="update"></textarea>
+
+        <div id="editor">
+          <textarea :value="input" @input="update" id="mdEditor"></textarea>
           <div v-html="compiledMarkdown" class="mdView"></div>
         </div>
+
       </div>
     </div>
   </div>
@@ -52,7 +54,7 @@
 
   <script>
     new Vue({
-    el: '#mdArea',
+    el: '#editor',
     data: {
         input: document.getElementById('mdEditor').value
     },
