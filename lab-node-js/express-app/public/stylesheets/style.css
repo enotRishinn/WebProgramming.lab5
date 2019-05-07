@@ -56,7 +56,7 @@ html, body {
   justify-items: center;
 }
 
-#editor {
+#editorArea {
   width: 100%;
   height: 89%;
   margin: 0;
@@ -65,7 +65,7 @@ html, body {
   flex-direction: row;
 }
 
-#mdEditor, .mdView{
+#editor, #mdView{
   font-size: 12pt;
   background-color: #d4e8eb;
   color: black;
@@ -75,7 +75,7 @@ html, body {
   box-sizing: border-box;
 }
 
-#mdEditor {
+#editor {
   padding: 10px;
   border: none;
   outline: none;

@@ -14,7 +14,7 @@ block content
         br
         if (fileName !== null)
          .saveFile
-           form(action='/update', method='post', id="update")
+           form(action='/update', method='post', id="up")
              input(type='hidden', name='saveFile', value=fileName)
              button.saveButton(type='submit') Сохранить открытый файл
          .deleteFile
@@ -32,14 +32,14 @@ block content
          .topBar
            .fileInfo
              p=fileName
-         #editor
-           textarea#mdEditor(:value='input', name="fileText", @input='update')=fileText
-           .mdView(v-html='compiledMarkdown')
+         div(id="editorArea")
+           textarea(@input="update", name="fileText", id="editor", form="update")=fileText
+           div(v-html="compiledMarkdown", id="mdView")
   script.
     new Vue({
-    el: '#editor',
+    el: '#editorArea',
     data: {
-    input: document.getElementById('mdEditor').value
+    input: document.getElementById('editor').value
     },
     computed: {
     compiledMarkdown: function () {
