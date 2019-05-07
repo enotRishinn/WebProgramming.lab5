@@ -27,14 +27,15 @@ block content
             each file in myFilesArr
               li
                 a(href="/file/#{file}")=file
+                .fileArea
+                  .topBar
+                    .fileInfo
+                      p=fileName
+          #editor
+            textarea#mdEditor(:value='input', name="fileText", @input='update')=fileText
+            .mdView(v-html='compiledMarkdown')
 
-       .fileArea
-         .topBar
-           .fileInfo
-             p=fileName
-         #editor
-           textarea#mdEditor(:value='input', name="fileText", @input='update')=fileText
-           .mdView(v-html='compiledMarkdown')
+
   script.
     new Vue({
     el: '#editor',
