@@ -115,3 +115,7 @@ html, body {
   border-width: 0.25%;
   border-color: rgb(0, 0, 0);
 }
+
+a {
+  color: #d4e8eb;
+}
