@@ -1,5 +1,48 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .mainBody
+    .topPanel
+      .leftPanel
+        form.addForm(action='/add', method='post')
+          p Имя файла
+          input.addFile(type='text', name='addFile')
+          br
+          br
+          button.addButton(type='submit') Создать файл
+        br
+        br
+        .saveFile
+          form#update(action='/update', method='post')
+            input(type='hidden', name='saveFile')
+            button.saveButton(type='submit') Сохранить открытый файл
+        .deleteFile
+          form(action='/delete', method='post')
+            input(type='hidden', name='deleteFile')
+            button.deleteButton(type='submit') Удалить открытый файл
+        .myFiles
+          p Список файлов
+      .fileArea
+        .topBar
+          .fileInfo
+            p НАЗВАНИЕ ФАЙЛА
+        #editor
+          textarea#mdEditor(:value='input', @input='update')
+          .mdView(v-html='compiledMarkdown')
+  script.
+    new Vue({
+    el: '#editor',
+    data: {
+    input: document.getElementById('mdEditor').value
+    },
+    computed: {
+    compiledMarkdown: function () {
+    return marked(this.input, { sanitize: true })
+    }
+    },
+    methods: {
+    update: _.debounce(function (e) {
+    this.input = e.target.value
+    }, 300)
+    }
+    })
