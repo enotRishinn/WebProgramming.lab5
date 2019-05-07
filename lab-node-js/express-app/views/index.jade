@@ -14,7 +14,7 @@ block content
         br
         if (fileName !== null)
          .saveFile
-           form#update(action='/update', method='post')
+           form(action='/update', method='post', id="update")
              input(type='hidden', name='saveFile', value=fileName)
              button.saveButton(type='submit') Сохранить открытый файл
          .deleteFile

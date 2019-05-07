@@ -6,7 +6,7 @@ var fs = require('fs');
 
 var url = 'mongodb://localhost:27017';
 
-/* GET home page. */
+
 router.get('/', function(req, res, next) {
   var myFilesArr = [];
   mongo.connect(url, function(err, client) {
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
       myFilesArr.push(doc.filename);
     }, function(){
       client.close();
-      res.render('index', { title: 'Markdown Editor', myFilesArr: myFilesArr, fileName: null, fileText: null });
+      res.render('index', { title: 'Markdown Editor', myFilesArr: myFilesArr, fileName: req.params.fileName, fileText: null });
     });
   });
 });
@@ -64,7 +64,13 @@ router.post('/add', function(req, res, next){
   });
 });
 
-
+router.post('/update', function(req, res, next){
+  var fileName = req.body.saveFile;
+  var fileText = req.body.fileText;
+  var fileStringName = 'C:/Users/Enot/Desktop/Web/lab5/lab-node-js/express-app/public/files/' + fileName + '.md';
+  fs.writeFileSync(fileStringName, fileText);
+  res.redirect('/file/' + fileName);
+});
 
 
 module.exports = router;
